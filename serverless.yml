@@ -1,0 +1,83 @@
+service: MyAppServerless
+frameworkVersion: '3'
+
+useDotenv: true
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  hello:
+    handler: Handler/handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+
+  RegisterUser:
+    name: Register-User
+    handler: Handler/handlerUser.create_user
+    events:
+      - httpApi:
+          path: /register
+          method: post
+
+  LoginUser:
+    name: Login_user
+    handler: Handler/handlerUser.login_user
+    events:
+      - httpApi:
+          path: /login
+          method: post
+
+  # RegisterContact:
+  #    name: Register_contact
+  #    handler: Handler/handlerContacts.create_new_contact
+  #    event:
+  #      - httpApi:
+  #          path : /createContact
+  #          method : post
+
+  createContact:
+    name: Create_contact
+    handler: Handler/handlerContacts.create_new_contact
+    events:
+      - httpApi:
+          path: /create_contact
+          method: post
+
+  updateContact:
+    name: update_contact
+    handler: Handler/handlerContacts.update_contact
+    events:
+      - httpApi:
+          path: /update_contact
+          method: post      
+
+  ContactList:
+    name: contactList
+    handler: Handler/handlerContacts.contactList
+    events:
+      - httpApi:
+          path: /contacts
+          method: post   
+
+  DescativateUser:
+    name: DesactivateUser 
+    handler: Handler/handlerUser.desactivateUser
+    events:
+      - httpApi:
+          path: descativateUser
+          method: post 
+
+  UpdateUser:
+    name: UpdateUser
+    handler: Handler/handlerUser.UpdateUser
+    events:
+      - httpApi:
+          path: UpdateUser
+          method: post
