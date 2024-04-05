@@ -2,6 +2,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class PasswordEncrypt:
+
     def encrypt(self, password_user):
         return generate_password_hash(str(password_user))
 

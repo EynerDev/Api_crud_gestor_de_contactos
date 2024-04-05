@@ -3,7 +3,7 @@ from utils.validation import Validation
 from classes.contact import Contact
 
 val = Validation()
-contact = Contact()
+contacts = Contact()
 
 
 @lamda_response
@@ -13,17 +13,27 @@ def create_new_contact(event, context):
         val.param_data(data, "type_contact", str, True),
         val.param_data(data, "number_contact", str, True),
         val.param_data(data, "name_contact", str, True)
-        ]
+    ]
     val.validate(list_validation)
-    result = contact.created_contact(data)
+    result = contacts.created_contact(data)
     return result
+
+
 @lamda_response
 def update_contact(event, context):
     data = get_event_data(event)
-    result = contact.updateContact(data)
+    result = contacts.updateContact(data)
     return result
+
+
 @lamda_response
 def contactList(event, context):
     data = get_event_data(event)
-    result = contact.contactList(data)
+    result = contacts.get_contacts(data)
+    return result
+
+@lamda_response
+def deleteContact(event, context):
+    data = get_event_data(event)
+    result = contacts.delete_contacts(data)
     return result

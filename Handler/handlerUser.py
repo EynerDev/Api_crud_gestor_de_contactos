@@ -35,3 +35,23 @@ def login_user(event, context):
 
     result = user.login_user(data)
     return result
+
+
+@lamda_response
+def desactivate_user(event, context):
+    data = get_event_data(event)
+    result = user.desactivateUser(data)
+    return result
+
+
+@lamda_response
+def UpdateUser(event, context):
+    data = get_event_data(event)
+    result = user.updateUser(data)
+    return result
+
+
+def getUser(event, context):
+    data = get_event_data(event)
+    result = user.get_users(data)
+    return result

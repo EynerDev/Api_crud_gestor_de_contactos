@@ -58,7 +58,7 @@ functions:
           path: /update_contact
           method: post      
 
-  ContactList:
+  getUsers:
     name: contactList
     handler: Handler/handlerContacts.contactList
     events:
@@ -66,18 +66,38 @@ functions:
           path: /contacts
           method: post   
 
-  DescativateUser:
+  DesactivateUser:
     name: DesactivateUser 
-    handler: Handler/handlerUser.desactivateUser
+    handler: Handler/handlerUser.desactivate_user
     events:
       - httpApi:
-          path: descativateUser
+          path: desativateUser
           method: post 
 
   UpdateUser:
-    name: UpdateUser
-    handler: Handler/handlerUser.UpdateUser
+      name: UpdateUser
+      handler: Handler/handlerUser.UpdateUser
+      events: 
+       - httpApi:
+            path: UpdateUser
+            method: post
+
+  getUser:
+    name: getUsers
+    handler: Handler/handlerUser.getUser
     events:
-      - httpApi:
-          path: UpdateUser
-          method: post
+        - httpApi:
+            path: getUser
+            method: post
+  deleteContact:
+    name: deleteContact
+    handler: Handler/handlerUser.deleteContact
+    events:
+        - httpApi:
+            path: deleteContact
+            method: post
+
+            
+  
+    
+ 
